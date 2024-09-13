@@ -1,6 +1,5 @@
 
 async function getExchangeRate() {
-    const API_KEY = "9cb22669a3c72e37977c00cd";
     const response = await fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`);
     const data = await response.json();
     return data.conversion_rates.EGP;
