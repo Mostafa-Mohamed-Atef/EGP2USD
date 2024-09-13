@@ -1,7 +1,6 @@
 
 async function getExchangeRate() {
-    const config = await fetch('key.json').then(response => response.json());
-    const API_KEY = config.api_key;
+    const API_KEY = "9cb22669a3c72e37977c00cd";
     const response = await fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`);
     const data = await response.json();
     return data.conversion_rates.EGP;
@@ -15,7 +14,7 @@ async function updateExchangeRate() {
 
 async function convertCurrency() {
     const amount = document.getElementById('amountInput').value;
-    // const rate = await updateExchangeRate();
+    const rate = await updateExchangeRate();
     let result = '';
 
     try {
