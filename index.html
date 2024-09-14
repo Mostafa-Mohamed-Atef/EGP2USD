@@ -4,39 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EGP2USD Converter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1E1E1E;
-            color: #FFFFFF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            padding: 20px;
-        }
-        input, button {
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            background-color: #3E3E3E;
-            color: #FFFFFF;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #4E4E4E;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container gradient-background">
         <h1 id="rateTitle">Loading exchange rate...</h1>
         <input type="text" id="amountInput" placeholder="Enter amount">
         <button onclick="convertCurrency()">Convert</button>

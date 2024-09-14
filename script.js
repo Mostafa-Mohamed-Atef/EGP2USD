@@ -1,6 +1,6 @@
 
 async function getExchangeRate() {
-    const response = await fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`);
+    const response = await fetch(`https://v6.exchangerate-api.com/v6/9cb22669a3c72e37977c00cd/latest/USD`);
     const data = await response.json();
     return data.conversion_rates.EGP;
 }
@@ -9,6 +9,9 @@ async function updateExchangeRate() {
     const rate = await getExchangeRate();
     document.getElementById('rateTitle').textContent = `The Exchange Rate is ${rate.toFixed(2)}`;
     return rate;
+}
+function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 async function convertCurrency() {
@@ -20,11 +23,11 @@ async function convertCurrency() {
         if (amount.startsWith('$')) {
             const usdAmount = parseFloat(amount.slice(1));
             const egpAmount = usdAmount * rate;
-            result = `${usdAmount.toFixed(2)} USD = ${egpAmount.toFixed(2)} EGP`;
+            result = `${formatNumberWithCommas(usdAmount.toFixed(2))} USD = ${formatNumberWithCommas(egpAmount.toFixed(2))} EGP`;
         } else {
             const egpAmount = parseFloat(amount);
             const usdAmount = egpAmount / rate;
-            result = `${egpAmount.toFixed(2)} EGP = ${usdAmount.toFixed(2)} USD`;
+            result = `${formatNumberWithCommas(egpAmount.toFixed(2))} EGP = ${formatNumberWithCommas(usdAmount.toFixed(2))} USD`;
         }
     } catch (error) {
         result = 'Please enter a valid number';
